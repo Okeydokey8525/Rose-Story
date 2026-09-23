@@ -7,7 +7,7 @@ Current Phase: **Phase 0**
 - [x] **Phase 0 — Repository Setup**
   - *Criteria*: Initial documentation, `.gitignore`, and AI rules are correctly established and merged without contradictions.
 
-- [ ] **Phase 1 — Basic Pygame Window**
+- [x] **Phase 1 — Basic Pygame Window**
   - *Criteria*: Running the main script opens a blank window that can be closed properly. A basic event loop is running at a stable framerate.
 
 - [ ] **Phase 2 — 3D Math**
