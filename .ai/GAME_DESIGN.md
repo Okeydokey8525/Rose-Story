@@ -2,30 +2,32 @@
 
 This document details the core gameplay mechanics and design for the Rose Garden MVP.
 
-## Core Gameplay Loop
+## Core Gameplay Loop & Player Actions
 
-The game loop is a continuous cycle of tending to roses on a soil grid:
-1. `EMPTY SOIL`
-2. `PLANT`
-3. `WATER`
-4. `GROW`
-5. `BUD`
-6. `BLOOM`
-7. `HARVEST`
-8. `REPLANT` (Returns to Empty Soil)
+The core gameplay consists of player actions interacting with the soil grid:
+- **PLANT**: The player plants a seed in empty soil.
+- **WATER**: The player waters planted soil.
+- **HARVEST**: The player collects a fully grown rose, resetting the soil.
 
-## Rose Lifecycle Stages
+## Soil States
 
-A rose progresses through the following distinct stages:
-1. **Seed**: Planted in the soil.
-2. **Sprout**: Initial growth after watering.
+The logic state of a soil patch governs what actions can be taken and what visuals are displayed:
+1. **Empty**: No plant exists. Only PLANT action is valid.
+2. **Planted - Dry**: A plant exists but growth is halted until watered. Only WATER action is valid.
+3. **Planted - Watered**: A plant exists and is actively growing. Time advances its visual growth stage.
+4. **Harvestable**: The plant has reached its final growth stage. Only HARVEST action is valid.
+
+## Rose Visual Growth Stages
+
+A rose progresses through the following distinct visual stages as time passes in the `Planted - Watered` soil state:
+1. **Seed**: Visually bare or small seed indicator.
+2. **Sprout**: Initial growth.
 3. **Young Plant**: Growing foliage.
 4. **Bud**: Preparing to flower.
-5. **Bloom**: Fully grown flower, ready for harvest.
-6. **Harvest**: The act of collecting the rose and clearing the soil.
+5. **Bloom**: Fully grown flower. Reaching this visual stage transitions the Soil State to `Harvestable`.
 
 ## Interaction Model
 
-- **Camera**: Observes the garden.
+- **Camera**: Observes the garden from a fixed or limited perspective.
 - **Player Input**: Interacts directly with the soil grid (e.g., clicking on a soil patch to plant, water, or harvest).
-- **Time/Growth**: Plants advance through their lifecycle stages over time, provided they are adequately cared for (e.g., watered).
+- **Time/Growth**: Plants advance through their visual growth stages over time, provided their soil state is `Planted - Watered`.

@@ -5,6 +5,7 @@ This document details the software architecture required to build a 3D game usin
 ## Core Principle
 
 The project is built entirely on Pygame. It uses a custom-built 3D software renderer. **External 3D engines are strictly forbidden.**
+Architecture should be kept as simple as possible. Avoid complex architectures like ECS unless strictly required for performance or functionality later. Stick to basic Object-Oriented design.
 
 ## Incremental 3D Engine Architecture
 
@@ -26,6 +27,6 @@ The 3D engine will be built from the ground up, following these incremental mile
 ## Game Logic Structure
 
 - **Game Engine Loop**: Handles events, updates game state, and calls the renderer.
-- **Scene Management**: Holds the entities (Soil grid, Roses, Camera).
-- **Entity Component / OOP**: Entities in the world (e.g., Rose plants) handle their own state (growth timer, watered status) and provide rendering data to the 3D pipeline.
+- **Scene / Object Management**: A simple list or hierarchy holding the basic game objects (Soil grid, Roses, Camera).
+- **Basic OOP**: Objects in the world (e.g., Soil patches, Rose plants) manage their own internal state (timers, visual state) and expose rendering data to the 3D pipeline.
 - **Input System**: Translates 2D mouse clicks on the screen into 3D world interactions (raycasting against the soil grid).
