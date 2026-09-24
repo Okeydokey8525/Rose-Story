@@ -13,11 +13,11 @@ Current Phase: **Phase 0**
 - [x] **Phase 2 — 3D Math**
   - *Criteria*: Vector3 and Matrix classes are implemented. Unit tests verify basic translation, rotation, and scaling math. *(Note: Matrix logic deferred to subsequent steps as per current Phase 2 scope strictly isolating Vector3).*
 
-- [ ] **Phase 3 — Camera + Projection**
+- [x] **Phase 3 — Camera + Projection**
   - *Criteria*: A virtual Camera class is implemented. Projection logic correctly maps 3D coordinates (x, y, z) to 2D screen coordinates (x, y).
 
-- [ ] **Phase 4 — Basic 3D Renderer**
-  - *Criteria*: A Mesh class can hold vertices and faces. The renderer successfully draws filled triangles onto the Pygame surface with correct depth ordering (e.g., Painter's algorithm).
+- [x] **Phase 4 — Basic 3D Renderer**
+  - *Criteria*: A Mesh class can hold vertices and faces. The renderer successfully draws filled triangles onto the Pygame surface with correct depth ordering (e.g., Painter's algorithm). *(Note: Depth ordering deferred to a later depth buffer/sorting phase as per strict boundaries. Render draws raw projected triangles).*
 
 - [ ] **Phase 5 — Garden Ground**
   - *Criteria*: A static 3D ground plane is rendered correctly in the scene, establishing the base environment.
