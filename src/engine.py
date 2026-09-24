@@ -1,6 +1,11 @@
 import pygame
 import sys
 
+from camera import Camera
+from renderer import Renderer
+from mesh import Mesh
+from vector3 import Vector3
+
 class GameEngine:
     def __init__(self, width: int = 800, height: int = 600, fps: int = 60):
         pygame.init()
@@ -15,6 +20,20 @@ class GameEngine:
 
         # Simple background color (a soft sky blue/gray or dirt brown placeholder)
         self.bg_color = (135, 206, 235)  # Sky blue placeholder
+
+        # Phase 4: Minimal Demonstration Setup
+        self.camera = Camera(screen_width=self.width, screen_height=self.height)
+        self.renderer = Renderer(self.camera, self.screen)
+
+        # A simple triangle placed in front of the camera (Z = 5)
+        self.test_mesh = Mesh(
+            vertices=[
+                Vector3(0, -2, 5),    # Top
+                Vector3(-2, 2, 5),    # Bottom Left
+                Vector3(2, 2, 5)      # Bottom Right
+            ],
+            faces=[(0, 1, 2)]
+        )
 
     def handle_events(self):
         for event in pygame.event.get():
@@ -33,6 +52,7 @@ class GameEngine:
         self.screen.fill(self.bg_color)
 
         # Draw everything here
+        self.renderer.render_mesh(self.test_mesh, color=(255, 100, 100))
 
         # Update display
         pygame.display.flip()
