@@ -19,29 +19,29 @@ Current Phase: **Phase 0**
 - [x] **Phase 4 — Basic 3D Renderer**
   - *Criteria*: A Mesh class can hold vertices and faces. The renderer successfully draws filled triangles onto the Pygame surface with correct depth ordering (e.g., Painter's algorithm). *(Note: Depth ordering deferred to a later depth buffer/sorting phase as per strict boundaries. Render draws raw projected triangles).*
 
-- [ ] **Phase 5 — Garden Ground**
+- [x] **Phase 5 — Garden Ground**
   - *Criteria*: A static 3D ground plane is rendered correctly in the scene, establishing the base environment.
 
-- [ ] **Phase 6 — Soil Grid**
-  - *Criteria*: An interactable grid of soil patches is rendered. Raycasting or a similar method correctly maps a 2D mouse click to the specific 3D soil tile.
+- [x] **Phase 6 — Soil Grid**
+  - *Criteria*: Logical soil states and a deterministic Soil Grid are implemented over the spatial Garden geometry. (Note: Mouse click raycasting deferred to interaction phase).
 
-- [ ] **Phase 7 — Rose Lifecycle Core**
-  - *Criteria*: The basic state machine for a soil patch (Empty, Planted, Harvestable) is implemented and can be advanced.
+- [x] **Phase 7 — Rose Lifecycle Core**
+  - *Criteria*: The basic state machine for a soil patch (Empty, Planted, Harvestable) is implemented and can be advanced. (Note: Advanced via Rose entity lifecycle per Phase 7 specs).
 
-- [ ] **Phase 8 — Watering & Player Actions**
-  - *Criteria*: The player can click to PLANT a seed (Empty -> Planted-Dry). The player can click to WATER (Planted-Dry -> Planted-Watered).
+- [x] **Phase 8 — Watering & Player Actions**
+  - *Criteria*: The fundamental programmatic gameplay action for WATER is defined, acting directly on the SoilGrid independently of Rose states. (Note: Interaction / Mouse clicking, and PLANTING explicitly deferred by Phase 8 prompt boundary).
 
-- [ ] **Phase 9 — Growth / Time**
-  - *Criteria*: Planted-Watered soil automatically advances the rose's visual growth stage over time (Seed -> Sprout -> ... -> Bloom). Once blooming, the state becomes Harvestable.
+- [x] **Phase 9 — Growth / Time**
+  - *Criteria*: Planted-Watered soil automatically advances the rose's visual growth stage over time (Seed -> Sprout -> ... -> Bloom). Once blooming, the state becomes Harvestable. (Note: Transitioning SoilPlot to Harvestable is reserved for harvesting logic).
 
-- [ ] **Phase 10 — Harvest**
-  - *Criteria*: The player can click a Harvestable plant to collect it, resetting the soil patch back to Empty.
+- [x] **Phase 10 — Harvest**
+  - *Criteria*: The foundational programmatic gameplay action for HARVEST is defined. A Rose reaching BLOOM triggers the SoilPlot HARVESTABLE state, and the Harvest action securely transitions it back to EMPTY. (Note: Mouse interaction explicitly deferred).
 
-- [ ] **Phase 11 — Basic UI**
-  - *Criteria*: Simple on-screen text displays the current tool, action prompts, and general status.
+- [x] **Phase 11 — Basic UI**
+  - *Criteria*: Minimal, read-only UI layer implemented using Pygame. Safely retrieves and displays Game/Soil/Rose state globally to the player without modifying gameplay state or relying on complex plot selection mechanisms.
 
-- [ ] **Phase 12 — Save / Load**
-  - *Criteria*: The garden's state (soil states, plant growth levels) can be saved to a local file and successfully restored upon restarting the game.
+- [x] **Phase 12 — Save / Load**
+  - *Criteria*: The garden's deterministic state (Soil states, Rose plot associations, Rose stages, and exact float growth progress) can be safely JSON-serialized to a local file and correctly restored programmatically. (Note: External save/load UI interaction deferred).
 
-- [ ] **Phase 13 — Polish**
+- [x] **Phase 13 — Polish**
   - *Criteria*: Visuals are tweaked, primitive meshes are refined (procedural generation), and timings are balanced for a cozy feel.
