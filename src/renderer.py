@@ -10,7 +10,7 @@ class Renderer:
         self.camera = camera
         self.surface = surface
 
-    def render_mesh(self, mesh: Mesh, color: tuple[int, int, int] = (255, 255, 255)):
+    def render_mesh(self, mesh: Mesh, color: tuple[int, int, int] = (255, 255, 255), wireframe_color: tuple[int, int, int] = (0, 0, 0)):
         """
         Projects and draws the faces of a mesh onto the Pygame surface.
         """
@@ -39,4 +39,5 @@ class Renderer:
             # Draw filled polygon (triangle)
             pygame.draw.polygon(self.surface, color, [p1, p2, p3])
             # Draw wireframe outline so the shape is clearly visible even without lighting
-            pygame.draw.polygon(self.surface, (0, 0, 0), [p1, p2, p3], width=1)
+            if wireframe_color:
+                pygame.draw.polygon(self.surface, wireframe_color, [p1, p2, p3], width=1)
